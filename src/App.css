@@ -109,7 +109,9 @@ body {
 .bg-fd{
     background-color: #fdfdfd;
 }
-
+.bg-fd-2{
+    background-color: #f8f8f8;
+}
 .logo:hover {
     filter: drop-shadow(0 0 2em #3ecf8e);
   }
