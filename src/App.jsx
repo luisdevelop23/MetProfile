@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App w-10/12 mx-auto bg-fd border-2">
+    <div className="App lg:w-10/12 mx-auto bg-fd border-2">
         <Header/>
         <Info/>
         <Footer/>
