@@ -1,15 +1,12 @@
-import React from 'react'
+import React from "react";
+import asterisk from "./../assets/icons/asterisk.svg";
 
 const PNRExperiencia = () => {
   return (
     <>
-      <h1 className="nnf-bold col-span-2 text-2xl">
-        Experiencias Laborales
-      </h1>
-
       <div className="flex flex-col">
         <h2 className="nnf-regular flex">
-          Intitución{" "}
+          Nombre de la institución{" "}
           <span className="flex justify-center text-2xl font-bold">
             <img src={asterisk} className="w-4" />
           </span>
@@ -17,13 +14,13 @@ const PNRExperiencia = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none"
         />
       </div>
 
       <div className="flex flex-col">
         <h2 className="nnf-regular flex">
-          Titulo{" "}
+          Puesto{" "}
           <span className="flex justify-center text-2xl font-bold">
             <img src={asterisk} className="w-4" />
           </span>
@@ -31,12 +28,12 @@ const PNRExperiencia = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none"
         />
       </div>
 
       {/* Fechas inicio Final */}
-      <div className="flex gap-x-2  0">
+      <div className="0 flex gap-x-2">
         <div className="flex flex-col">
           <h2 className="nnf-regular flex">
             Fecha de Incio{" "}
@@ -47,7 +44,7 @@ const PNRExperiencia = () => {
           <input
             type="date"
             placeholder="escribe aqui"
-            className="border-2 pl-4"
+            className="border-2 pl-4 focus:outline-none"
           />
         </div>
         <div className="flex flex-col">
@@ -60,7 +57,7 @@ const PNRExperiencia = () => {
           <input
             type="date"
             placeholder="escribe aqui"
-            className="border-2 pl-4"
+            className="border-2 pl-4 focus:outline-none"
           />
         </div>
       </div>
@@ -68,19 +65,23 @@ const PNRExperiencia = () => {
 
       <div className="flex flex-col">
         <h2 className="nnf-regular flex">
-          Descripción{" "}
+          Descripción de tu Puesto{" "}
           <span className="flex justify-center text-2xl font-bold">
             <img src={asterisk} className="w-4" />
           </span>
         </h2>
-        <input
-          type="text"
+        <textarea
+          name="descripcion"
+          id="idDescripcion"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
-        />
+          cols="20"
+          rows="3"
+          className="border-2 pl-4 pt-2 focus:outline-none"
+          style={{ resize: "none" }}
+        ></textarea>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default PNRExperiencia
+export default PNRExperiencia;

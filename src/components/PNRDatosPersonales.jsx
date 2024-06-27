@@ -4,7 +4,6 @@ const PNRDatosPersonales = () => {
   return (
     <>
       {/* Incio de los datos personales */}
-      <h1 className="nnf-bold col-span-2 text-2xl">Datos Personales</h1>
       <div className="flex flex-col">
         <h2 className="nnf-regular flex">
           Primer Nombre{" "}
@@ -15,7 +14,7 @@ const PNRDatosPersonales = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -29,7 +28,7 @@ const PNRDatosPersonales = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -43,7 +42,7 @@ const PNRDatosPersonales = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -57,7 +56,7 @@ const PNRDatosPersonales = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -71,7 +70,7 @@ const PNRDatosPersonales = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -85,7 +84,7 @@ const PNRDatosPersonales = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -99,7 +98,7 @@ const PNRDatosPersonales = () => {
         <input
           type="date"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
       {/* Fin de los datos personales */}

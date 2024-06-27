@@ -4,7 +4,6 @@ import asterisk from "./../assets/icons/asterisk.svg";
 const PNRHabilidades = () => {
   return (
     <>
-      <h1 className="nnf-bold col-span-2 text-2xl">Habilidades</h1>
       <div className="flex flex-col">
         <h2 className="nnf-regular flex">
           Nombre de la habilidad{" "}
@@ -15,7 +14,7 @@ const PNRHabilidades = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
       <div className="flex flex-col">
@@ -25,7 +24,7 @@ const PNRHabilidades = () => {
             <img src={asterisk} className="w-4" />
           </span>
         </h2>
-        <select name="" id="" className="border-2">
+        <select name="" id="" className="border-2 focus:outline-none ">
           <option value="">1</option>
           <option value="">2</option>
           <option value="">3</option>

@@ -1,13 +1,11 @@
 import React from "react";
 import asterisk from "./../assets/icons/asterisk.svg";
 
-const PNRDatosEstuiantiles = () => {
+const PNRDatosEstudiantiles = () => {
   return (
     <>
       {/* Incio de datos Estudiantiles */}
-      <h1 className="nnf-bold col-span-2 text-2xl">
-        Datos Estudiantiles
-      </h1>
+  
 
       <div className="flex flex-col">
         <h2 className="nnf-regular flex">
@@ -19,7 +17,7 @@ const PNRDatosEstuiantiles = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -33,7 +31,7 @@ const PNRDatosEstuiantiles = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
 
@@ -49,7 +47,7 @@ const PNRDatosEstuiantiles = () => {
           <input
             type="date"
             placeholder="escribe aqui"
-            className="border-2 pl-4"
+            className="border-2 pl-4 focus:outline-none "
           />
         </div>
         <div className="flex flex-col">
@@ -62,7 +60,7 @@ const PNRDatosEstuiantiles = () => {
           <input
             type="date"
             placeholder="escribe aqui"
-            className="border-2 pl-4"
+            className="border-2 pl-4 focus:outline-none "
           />
         </div>
       </div>
@@ -78,7 +76,7 @@ const PNRDatosEstuiantiles = () => {
         <input
           type="text"
           placeholder="escribe aqui"
-          className="border-2 pl-4"
+          className="border-2 pl-4 focus:outline-none "
         />
       </div>
       {/* Fin de datos Estudiantiles */}
@@ -86,4 +84,4 @@ const PNRDatosEstuiantiles = () => {
   );
 };
 
-export default PNRDatosEstuiantiles;
+export default PNRDatosEstudiantiles;
