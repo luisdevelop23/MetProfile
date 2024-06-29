@@ -37,28 +37,19 @@ const CreateAccount = () => {
       // ?Verificamos si hay datos Habilidades
       if (Dthabilidades.length > 0) {
         const results = await SkillsRegister(Dthabilidades, idUser);
-        console.log(results);
-        if (results[0].error == null) {
-          return;
-        }
+        
       }
 
       //?Verificamos si hay datos Estudiantiles
       if (DtEstudiantiles.length > 0) {
         const results = await StudiesRegister(DtEstudiantiles, idUser);
         console.log(results);
-        if (results[0].error == null) {
-          return;
-        }
       }
 
       // ?Verificamos si hay datos Experiencia
       if (Dtexperiencia.length > 0) {
         const results = await WorkExperienceRegister(Dtexperiencia, idUser);
         console.log(results);
-        if (results[0].error == null) {
-          return;
-        }
       }
     }
   };
