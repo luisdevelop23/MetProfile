@@ -3,6 +3,7 @@ import PNRDatosDelUsuario from "../components/PNRDatosDelUsuario";
 import PNRDatosEstudiantiles from "../components/PNRDatosEstudiantiles";
 import PNRExperiencia from "../components/PNRExperiencia";
 import PNRHabilidades from "../components/PNRHabilidades";
+import SkillsRegister from "../utils/SkillsRegister";
 import StudiesRegister from "../utils/StudiesRegister";
 import UserRegister from "../utils/UserRegister";
 import WorkExperienceRegister from "../utils/WorkExperienceRegister";
