@@ -15,7 +15,7 @@ const Info = () => {
         expande tu red de contactos de manera efectiva y profesional.
       </p>
       {/*Incio de los cards */}
-      <div className="bg-fd-2 mt-8 grid grid-cols-1 gap-10 px-10 py-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="bg-fd-2 mt-8 grid grid-cols-1 gap-10 px-10 py-4 sm:grid-cols-2 xl:grid-cols-4">
         <div className="logo flex flex-col justify-between rounded-3xl border-4 border-[#3ecf8e] bg-white p-4 duration-700">
           <h2 className="nnf-semi-bold nnf-regular text-center text-2xl">
             Accesibilidad y Actualización
