@@ -18,9 +18,9 @@ const CreateAccount = () => {
 
   }
   const RegistrarDatoss = async () => {
-    if(Validation)return
+    // if(Validation)return
 
-    console.log(Dtexperiencia);
+    console.log(Dtexperiencia, DtEstudiantiles, Dthabilidades, DataPersonal);
     // return;
     // ?Verificamos si hay datos personales
     if (DataPersonal) {
@@ -36,7 +36,7 @@ const CreateAccount = () => {
       // ?Verificamos si hay datos Habilidades
       if (Dthabilidades.length > 0) {
         const results = await SkillsRegister(Dthabilidades, idUser);
-        // console.log(results);
+        console.log(results);
         if (results[0].error == null) {
           return;
         }
@@ -45,7 +45,7 @@ const CreateAccount = () => {
       //?Verificamos si hay datos Estudiantiles
       if (DtEstudiantiles.length > 0) {
         const results = await StudiesRegister(DtEstudiantiles, idUser);
-        // console.log(results);
+        console.log(results);
         if (results[0].error == null) {
           return;
         }
