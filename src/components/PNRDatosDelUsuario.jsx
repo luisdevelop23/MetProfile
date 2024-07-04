@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import asterisk from "./../assets/icons/asterisk.svg";
-const PNRDatosDelUsuario = ({setDataPersonal}) => {
+import viewfalse from "./../assets/icons/viewfalse.svg";
+import viewtrue from "./../assets/icons/viewtrue.svg";
+const PNRDatosDelUsuario = ({ setDataPersonal }) => {
   const [formData, setFormData] = useState({
     IdUsuario: "",
     Contraseña: "",
@@ -13,6 +15,8 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
     Direccion: "",
     FechaNacimiento: "",
   });
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -20,7 +24,7 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
       [name]: value,
     });
   };
- 
+
   useEffect(() => {
     setDataPersonal(formData);
   }, [formData, setDataPersonal]);
@@ -29,9 +33,9 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
     <>
       {/* Incio de los datos personales */}
       <h1 className="nnf-bold col-span-2 text-2xl">Usuario y Contraseña</h1>
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
-          ID usuario Nombre{" "}
+          ID Usuario{" "}
           <span className="flex justify-center text-2xl font-bold">
             <img src={asterisk} className="w-4" />
           </span>
@@ -47,32 +51,44 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
             if (!value.includes("\n") && !value.includes(" ")) {
               setFormData({
                 ...formData,
-                [name]: value.substring(0, 8), // Limitar a 8 caracteres
+                [name]: value.substring(0, 15), // Limitar a 8 caracteres
               });
             }
           }}
-          className="w-[300px] border-2 pl-4 focus:outline-none"
-          maxLength={10}
+          className="border-2 pl-4 focus:outline-none"
         />
       </div>
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Contraseña{" "}
           <span className="flex justify-center text-2xl font-bold">
             <img src={asterisk} className="w-4" />
           </span>
         </h2>
-        <input
-          type="password"
-          name="Contraseña"
-          placeholder="escribe aqui"
-          value={formData.Contraseña}
-          onChange={handleChange}
-          className="border-2 pl-4 focus:outline-none"
-        />
+        <div className="col-span-2 flex">
+          <input
+            type={passwordVisible ? "text" : "password"}
+            name="Contraseña"
+            placeholder="escribe aqui"
+            value={formData.Contraseña}
+            onChange={handleChange}
+            className="border-2 pl-4 w-full focus:outline-none"
+          />
+          <button
+            className="flex items-center  bg-slate-300 px-2"
+            onClick={() => setPasswordVisible(!passwordVisible)}
+          >
+            {passwordVisible ? (
+              <img src={viewfalse} className="w-6" alt="" />
+            ) : (
+              <img src={viewtrue} className="w-6" alt="" />
+            )}
+          </button>
+        </div>
       </div>
+
       <h1 className="nnf-bold col-span-2 text-2xl">Datos Personales</h1>
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Primer Nombre{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -89,7 +105,7 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Segundo Nombre{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -106,7 +122,7 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Apellido Paterno{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -123,7 +139,7 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Apellido Materno{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -140,7 +156,7 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Dirección{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -157,7 +173,7 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Telefono{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -170,12 +186,12 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
           placeholder="escribe aqui"
           value={formData.Telefono}
           onChange={handleChange}
-          className="border-2 pl-4 focus:outline-none "
+          className="border-2 pl-4 focus:outline-none"
           maxLength={20}
         />
       </div>
 
-      <div className="flex flex-col">
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Fecha Nacimiento{" "}
           <span className="flex justify-center text-2xl font-bold">
@@ -191,7 +207,8 @@ const PNRDatosDelUsuario = ({setDataPersonal}) => {
           className="border-2 pl-4 focus:outline-none"
         />
       </div>
-      <div className="flex flex-col">
+
+      <div className="col-span-2 flex flex-col md:col-span-1">
         <h2 className="nnf-regular flex">
           Correo Electronico{" "}
           <span className="flex justify-center text-2xl font-bold">

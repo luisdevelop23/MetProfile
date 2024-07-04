@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import PerfilUno from "./layouts/PerfilUno";
+import All from "./pages/All";
 import CreateAccount from "./pages/CreateAccount";
 import Home from "./pages/Home";
 
@@ -16,8 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<CreateAccount />} />
-          <Route path="/perfil1" element={<PerfilUno />} />
-          {/* <Route path="/user/{d2h82hd}" element={<PerfilUno />} /> */}
+          <Route path="/all" element={<All />} />
         </Routes>
       </BrowserRouter>
     </div>

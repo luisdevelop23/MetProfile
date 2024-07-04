@@ -28,7 +28,7 @@ const PNRHabilidades = ({ setDtHabilidades }) => {
   return (
     <>
       {habilidades.map((habilidad, index) => (
-        <div key={index} className="col-span-2 flex gap-4">
+        <div key={index} className="col-span-2 flex flex-col md:flex-row gap-4">
           <div className="px-4">
             <h2 className="nnf-regular flex">
               Nombre de la habilidad {index + 1}

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import SmoothScroll from "smooth-scroll";
+import PNRAlerta from "../components/PNRAlerta";
 import PNRDatosDelUsuario from "../components/PNRDatosDelUsuario";
 import PNRDatosEstudiantiles from "../components/PNRDatosEstudiantiles";
 import PNRExperiencia from "../components/PNRExperiencia";
 import PNRHabilidades from "../components/PNRHabilidades";
+import validarFormulario from "../helpers/ValidarFormulario";
 import SkillsRegister from "../utils/SkillsRegister";
 import StudiesRegister from "../utils/StudiesRegister";
 import UserRegister from "../utils/UserRegister";
@@ -12,17 +15,39 @@ const CreateAccount = () => {
   const [Dthabilidades, setDtHabilidades] = useState([]);
   const [DtEstudiantiles, setDtEstudiantiles] = useState([]);
   const [Dtexperiencia, setDtExperiencia] = useState([]);
-  
-  function Validation() {
-    // ?Verificamos si hay datos personales
-    
+  const [textAlerta, setTextAlerta] = useState("");
+  const [alertaEstado, setAlertaEstado] = useState(false);
 
+  function showAlerta() {
+    setAlertaEstado(!alertaEstado);
   }
-  const RegistrarDatoss = async () => {
-    // if(Validation)return
 
-    console.log(Dtexperiencia, DtEstudiantiles, Dthabilidades, DataPersonal);
-    // return;
+  const RegistrarDatoss = async () => {
+    let txt = validarFormulario(
+      DataPersonal,
+      Dthabilidades,
+      DtEstudiantiles,
+      Dtexperiencia,
+    );
+
+    setTextAlerta(txt);
+
+    let textAlerta = txt;
+
+    if (textAlerta !== "") {
+      const scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 800, // Velocidad del scroll (en milisegundos)
+        speedAsDuration: true, // Interpretar speed como duración (opcional)
+      });
+
+      // Ejemplo: Hacer scroll al inicio de la página
+      scroll.animateScroll(0);
+      setAlertaEstado(true);
+      document.body.style.overflow = "hidden";
+      return;
+    }
+    console.log("dd3", txt, textAlerta);
+
     // ?Verificamos si hay datos personales
     if (DataPersonal) {
       // ?Insetamos los datos personales usuario
@@ -37,7 +62,6 @@ const CreateAccount = () => {
       // ?Verificamos si hay datos Habilidades
       if (Dthabilidades.length > 0) {
         const results = await SkillsRegister(Dthabilidades, idUser);
-        
       }
 
       //?Verificamos si hay datos Estudiantiles
@@ -56,16 +80,16 @@ const CreateAccount = () => {
 
   return (
     <div className="w-full bg-[#eeeeee] pb-8">
-      <div className="mx-auto w-10/12">
-        <h1 className="nnf-bold prc py-10 text-4xl">Registrate</h1>
-        <div className="mx-auto grid w-11/12 grid-cols-2 gap-x-16 gap-y-4 border-4 bg-white p-10 px-20 pb-8 pt-6">
-          <PNRDatosDelUsuario setDataPersonal={setDataPersonal} />
+      {alertaEstado == true ? (
+        <PNRAlerta textAlerta={textAlerta} showAlerta={showAlerta} />
+      ) : (
+        <></>
+      )}
 
-          <h1 className="nnf-bold col-span-2 text-2xl">
-            Datos Estudiantiles
-            <span className="pl-2 text-sm text-gray-500">(Opcional)</span>
-          </h1>
-          <PNRDatosEstudiantiles setDtEstudiantiles={setDtEstudiantiles} />
+      <div className="10/12 mx-auto lg:w-9/12 xl:w-8/12">
+        <h1 className="nnf-bold prc py-10 text-4xl text-center">Registrate</h1>
+        <div className="mx-auto grid w-11/12 grid-cols-2 gap-y-9  md:gap-x-16 md:gap-y-4 border-4 bg-white px-4 md:px-20 pb-8 pt-6">
+          <PNRDatosDelUsuario setDataPersonal={setDataPersonal} />
 
           <h1 className="nnf-bold col-span-2 text-2xl">
             Habilidades{" "}
@@ -74,14 +98,20 @@ const CreateAccount = () => {
           <PNRHabilidades setDtHabilidades={setDtHabilidades} />
 
           <h1 className="nnf-bold col-span-2 text-2xl">
+            Datos Estudiantiles
+            <span className="pl-2 text-sm text-gray-500">(Opcional)</span>
+          </h1>
+          <PNRDatosEstudiantiles setDtEstudiantiles={setDtEstudiantiles} />
+
+          <h1 className="nnf-bold col-span-2 text-2xl">
             Experiencias Laborales
             <span className="pl-2 text-sm text-gray-500">(Opcional)</span>
           </h1>
-          <PNRExperiencia  setDtExperiencia={setDtExperiencia}/>
+          <PNRExperiencia setDtExperiencia={setDtExperiencia} />
           {/* Validaciones y registro */}
           <div className="col-span-2 flex justify-end py-6">
             <button
-              className="gb-prc nnf-bold nnf-bold logo w-[250px] py-3 text-2xl uppercase text-white duration-100 ease-linear md:py-5 lg:block"
+              className="gb-prc nnf-bold nnf-bold logo w-[250px] mx-auto md:mx-0 py-3 text-2xl uppercase text-white duration-100 ease-linear md:py-5 lg:block"
               onClick={RegistrarDatoss}
             >
               Crear tu perfil

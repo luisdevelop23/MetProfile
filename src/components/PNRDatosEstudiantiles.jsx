@@ -29,14 +29,13 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
   };
 
   useEffect(() => {
-    console.log(estudios);
     setDtEstudiantiles(estudios);
   }, [estudios, setDtEstudiantiles]);
 
   return (
     <>
       {estudios.map((estudio, index) => (
-        <div key={index}>
+        <div key={index} className="col-span-2 md:grid md:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <h2 className="nnf-regular flex">
               Institución{" "}
@@ -72,7 +71,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
           </div>
 
           {/* Fechas inicio Final */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 col-span-3">
             <div className="flex flex-col">
               <h2 className="nnf-regular flex">
                 Fecha de Inicio{" "}

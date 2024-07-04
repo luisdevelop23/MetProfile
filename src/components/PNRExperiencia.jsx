@@ -36,7 +36,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
   return (
     <>
       {experiencia.map((experiencia, index) => (
-        <div key={index} className="col-span-2 grid grid-cols-2 gap-4">
+        <div key={index} className="col-span-2 md:grid md:grid-cols-2 gap-4">
           <div className="flex flex-col">
             <h2 className="nnf-regular flex">
               Nombre de la Empresa {index + 1}
