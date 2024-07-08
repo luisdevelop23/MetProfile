@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import asterisk from "./../assets/icons/asterisk.svg";
 import viewfalse from "./../assets/icons/viewfalse.svg";
 import viewtrue from "./../assets/icons/viewtrue.svg";
-const PNRDatosDelUsuario = ({ setDataPersonal }) => {
+const RPUserData = ({ setPersonalData, CleanData }) => {
   const [formData, setFormData] = useState({
     IdUsuario: "",
     Contraseña: "",
@@ -26,8 +26,14 @@ const PNRDatosDelUsuario = ({ setDataPersonal }) => {
   };
 
   useEffect(() => {
-    setDataPersonal(formData);
-  }, [formData, setDataPersonal]);
+    setPersonalData(formData);
+  }, [formData, setPersonalData]);
+
+  useEffect(() => {
+    if (CleanData) {
+      setFormData({});
+    }
+  }, [CleanData]);
 
   return (
     <>
@@ -72,10 +78,10 @@ const PNRDatosDelUsuario = ({ setDataPersonal }) => {
             placeholder="escribe aqui"
             value={formData.Contraseña}
             onChange={handleChange}
-            className="border-2 pl-4 w-full focus:outline-none"
+            className="w-full border-2 pl-4 focus:outline-none"
           />
           <button
-            className="flex items-center  bg-slate-300 px-2"
+            className="flex items-center bg-slate-300 px-2"
             onClick={() => setPasswordVisible(!passwordVisible)}
           >
             {passwordVisible ? (
@@ -230,4 +236,4 @@ const PNRDatosDelUsuario = ({ setDataPersonal }) => {
   );
 };
 
-export default PNRDatosDelUsuario;
+export default RPUserData;

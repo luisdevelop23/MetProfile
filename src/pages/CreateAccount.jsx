@@ -1,117 +1,152 @@
 import React, { useState } from "react";
 import SmoothScroll from "smooth-scroll";
-import PNRAlerta from "../components/PNRAlerta";
-import PNRDatosDelUsuario from "../components/PNRDatosDelUsuario";
-import PNRDatosEstudiantiles from "../components/PNRDatosEstudiantiles";
-import PNRExperiencia from "../components/PNRExperiencia";
-import PNRHabilidades from "../components/PNRHabilidades";
+//?Importamos los componentes
+import PNRSkills from "../components/PNRSkills";
+import RPAlert from "../components/RPAlert";
+import RPJob from "../components/RPJob";
+import RPStudy from "../components/RPStudy";
+//?Funciones Registro Supabase
+import RPRegisterCard from "../components/RPRegisterCard";
+import RPUserData from "../components/RPUserData";
 import validarFormulario from "../helpers/ValidarFormulario";
 import SkillsRegister from "../utils/SkillsRegister";
 import StudiesRegister from "../utils/StudiesRegister";
 import UserRegister from "../utils/UserRegister";
 import WorkExperienceRegister from "../utils/WorkExperienceRegister";
 const CreateAccount = () => {
-  const [DataPersonal, setDataPersonal] = useState({});
-  const [Dthabilidades, setDtHabilidades] = useState([]);
-  const [DtEstudiantiles, setDtEstudiantiles] = useState([]);
-  const [Dtexperiencia, setDtExperiencia] = useState([]);
-  const [textAlerta, setTextAlerta] = useState("");
-  const [alertaEstado, setAlertaEstado] = useState(false);
+  //!Eliminar la informacion
+  const [CleanData, setCleanData] = useState(false);
+  //?Informacion de usuario
+  const [PersonalData, setPersonalData] = useState({}); //?Datos personales
+  const [DataSkills, setDataSkills] = useState([]); //?Habilidades
+  const [StudentData, setStudentData] = useState([]); //?Estudios
+  const [WorkExpData, setWorkExpData] = useState([]); //?Experiencia laboral
+  // ?Alerta estado y texto
+  const [TextAlert, setTextAlert] = useState(""); //?Texto de alerta
+  const [AlertStatus, setAlertStatus] = useState(false);
+  //?Registro de informacion de Card
+  const [RegisterStatus, setRegisterStatus] = useState(false);
+  const [RegisterValue, setRegisterValue] = useState(0);
+  const [ErrorRegisterText, setErrorRegisterText] = useState("");
+  //?USERDATA
+  const [UserData, setUserData] = useState({});
 
-  function showAlerta() {
-    setAlertaEstado(!alertaEstado);
+  function showAlert() {
+    setAlertStatus(!AlertStatus);
+  }
+  function RegisterCardShow() {
+    setRegisterStatus(false);
   }
 
   const RegistrarDatoss = async () => {
+    const scroll = new SmoothScroll('a[href*="#"]', {
+      speed: 800, // Velocidad del scroll (en milisegundos)
+      speedAsDuration: true, // Interpretar speed como duración (opcional)
+    });
     let txt = validarFormulario(
-      DataPersonal,
-      Dthabilidades,
-      DtEstudiantiles,
-      Dtexperiencia,
+      PersonalData,
+      DataSkills,
+      StudentData,
+      WorkExpData,
     );
 
-    setTextAlerta(txt);
+    setTextAlert(txt);
 
-    let textAlerta = txt;
-
-    if (textAlerta !== "") {
-      const scroll = new SmoothScroll('a[href*="#"]', {
-        speed: 800, // Velocidad del scroll (en milisegundos)
-        speedAsDuration: true, // Interpretar speed como duración (opcional)
-      });
-
-      // Ejemplo: Hacer scroll al inicio de la página
+    if (txt !== "") {
       scroll.animateScroll(0);
-      setAlertaEstado(true);
+      setAlertStatus(true);
       document.body.style.overflow = "hidden";
       return;
     }
-    console.log("dd3", txt, textAlerta);
+    //?mostramos el loading de registro
+    setRegisterStatus(true);
+    setRegisterValue(0);
 
-    // ?Verificamos si hay datos personales
-    if (DataPersonal) {
-      // ?Insetamos los datos personales usuario
-      const { data, error } = await UserRegister(DataPersonal);
-      if (error) {
-        alert(error.message);
-        return;
-      }
-      //*asignamos el id del usuario a una variable
-      const idUser = data[0].id;
+    scroll.animateScroll(0);
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {}, 3000);
 
-      // ?Verificamos si hay datos Habilidades
-      if (Dthabilidades.length > 0) {
-        const results = await SkillsRegister(Dthabilidades, idUser);
-      }
+    // ?insertamos los datos personales usuario
+    const { data, error } = await UserRegister(PersonalData);
 
-      //?Verificamos si hay datos Estudiantiles
-      if (DtEstudiantiles.length > 0) {
-        const results = await StudiesRegister(DtEstudiantiles, idUser);
-        console.log(results);
-      }
-
-      // ?Verificamos si hay datos Experiencia
-      if (Dtexperiencia.length > 0) {
-        const results = await WorkExperienceRegister(Dtexperiencia, idUser);
-        console.log(results);
-      }
+    // ?insertamos los datos de skills usuario
+    if (error) {
+      alert(error.message);
+      setRegisterValue(2);
+      setErrorRegisterText(error.message);
+      return;
     }
+    //*asignamos el id del usuario a una variable
+    const idUser = data[0].id;
+    console.log(data[0]);
+
+    // ?Verificamos si hay datos Habilidades
+    if (DataSkills.length > 0) {
+      const results = await SkillsRegister(DataSkills, idUser);
+    }
+
+    //?Verificamos si hay datos Estudiantiles
+    if (StudentData.length > 0) {
+      const results = await StudiesRegister(StudentData, idUser);
+      // console.log(results);
+    }
+
+    // ?Verificamos si hay datos Experiencia
+    if (WorkExpData.length > 0) {
+      const results = await WorkExperienceRegister(WorkExpData, idUser);
+      // console.log(results);
+    }
+
+    setCleanData(true);
+    setRegisterValue(1);
+    setUserData(data[0]);
+    setCleanData(false);
+    scroll.animateScroll(0);
   };
 
   return (
     <div className="w-full bg-[#eeeeee] pb-8">
-      {alertaEstado == true ? (
-        <PNRAlerta textAlerta={textAlerta} showAlerta={showAlerta} />
+      {AlertStatus == true ? (
+        <RPAlert TextAlert={TextAlert} showAlert={showAlert} />
+      ) : (
+        <></>
+      )}
+      {RegisterStatus == true ? (
+        <RPRegisterCard
+          RegisterCardShow={RegisterCardShow}
+          RegisterValue={RegisterValue}
+          UserData={UserData}
+          ErrorRegisterText={ErrorRegisterText}
+        />
       ) : (
         <></>
       )}
 
       <div className="10/12 mx-auto lg:w-9/12 xl:w-8/12">
-        <h1 className="nnf-bold prc py-10 text-4xl text-center">Registrate</h1>
-        <div className="mx-auto grid w-11/12 grid-cols-2 gap-y-9  md:gap-x-16 md:gap-y-4 border-4 bg-white px-4 md:px-20 pb-8 pt-6">
-          <PNRDatosDelUsuario setDataPersonal={setDataPersonal} />
-
+        <h1 className="nnf-bold prc py-10 text-center text-4xl">Registrate</h1>
+        <div className="mx-auto grid w-11/12 grid-cols-2 gap-y-9 border-4 bg-white px-4 pb-8 pt-6 md:gap-x-16 md:gap-y-4 md:px-20">
+          <RPUserData setPersonalData={setPersonalData} CleanData={CleanData} />
           <h1 className="nnf-bold col-span-2 text-2xl">
             Habilidades{" "}
             <span className="pl-2 text-sm text-gray-500">(Opcional)</span>
           </h1>
-          <PNRHabilidades setDtHabilidades={setDtHabilidades} />
+          <PNRSkills setDataSkills={setDataSkills} CleanData={CleanData} />
 
           <h1 className="nnf-bold col-span-2 text-2xl">
             Datos Estudiantiles
             <span className="pl-2 text-sm text-gray-500">(Opcional)</span>
           </h1>
-          <PNRDatosEstudiantiles setDtEstudiantiles={setDtEstudiantiles} />
+          <RPStudy setStudentData={setStudentData} CleanData={CleanData} />
 
           <h1 className="nnf-bold col-span-2 text-2xl">
             Experiencias Laborales
             <span className="pl-2 text-sm text-gray-500">(Opcional)</span>
           </h1>
-          <PNRExperiencia setDtExperiencia={setDtExperiencia} />
+          <RPJob setWorkExpData={setWorkExpData} CleanData={CleanData} />
           {/* Validaciones y registro */}
           <div className="col-span-2 flex justify-end py-6">
             <button
-              className="gb-prc nnf-bold nnf-bold logo w-[250px] mx-auto md:mx-0 py-3 text-2xl uppercase text-white duration-100 ease-linear md:py-5 lg:block"
+              className="gb-prc nnf-bold nnf-bold logo mx-auto w-[250px] py-3 text-2xl uppercase text-white duration-100 ease-linear md:mx-0 md:py-5 lg:block"
               onClick={RegistrarDatoss}
             >
               Crear tu perfil

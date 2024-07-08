@@ -1,8 +1,26 @@
-import React from "react";
+import { data } from "autoprefixer";
+import React, { useEffect, useState } from "react";
 import ALLNavbar from "../common/ALLNavbar";
 import ALLFilter from "../components/ALLFilter";
 import ALLUsersCards from "../components/ALLUsersCards";
+import supabase from "../utils/supabase";
 const All = () => {
+  const [UsersCards, setUsersCards] = useState([])
+  
+  const getAllUsers = async () => {
+    const { data, error } = await supabase
+      .from("usuarios")
+      .select("*")
+      .order("id", { ascending: false });
+    setUsersCards(data);
+  };
+  // getAllUsers();
+  useEffect(() => {
+    getAllUsers();
+  }, [data])
+
+  // console.log("all", UsersCards);
+
   return (
     <div className="">
       <ALLNavbar />
@@ -12,7 +30,13 @@ const All = () => {
             <ALLFilter />
           </div>
           <div className="w-7/12  justify-center ">
-            <ALLUsersCards />
+            {
+              UsersCards.map((user) => {
+                return (
+                  <ALLUsersCards user={user} />
+                )
+              })
+            }
           </div>
         </div>
       </div>

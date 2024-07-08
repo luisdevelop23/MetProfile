@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import asterisk from "./../assets/icons/asterisk.svg";
 
-const PNRExperiencia = ({ setDtExperiencia }) => {
-  const [experiencia, setExperiencia] = useState([]);
+const RPJob = ({ setWorkExpData, CleanData }) => {
+  const [Job, setJob] = useState([]);
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const updatedExperiencia = [...experiencia];
-    updatedExperiencia[index][name] = value;
-    setExperiencia(updatedExperiencia);
+    const updateJob = [...Job];
+    updateJob[index][name] = value;
+    setJob(updateJob);
   };
 
-  const handleAddExperiencia = () => {
-    setExperiencia([
-      ...experiencia,
+  const handleAddJob = () => {
+    setJob([
+      ...Job,
       {
         empresa: "",
         puesto: "",
@@ -24,19 +24,25 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
     ]);
   };
 
-  const handleRemoveExperiencia = (index) => {
-    const updatedExperiencia = experiencia.filter((_, i) => i !== index);
-    setExperiencia(updatedExperiencia);
+  const handleRemoveJob = (index) => {
+    const updateJob = Job.filter((_, i) => i !== index);
+    setJob(updateJob);
   };
 
   useEffect(() => {
-    setDtExperiencia(experiencia);
-  }, [experiencia, setDtExperiencia]);
+    setWorkExpData(Job);
+  }, [Job, setWorkExpData]);
+
+  useEffect(() => {
+    if (CleanData) {
+      setJob([]);
+    }
+  }, [CleanData]);
 
   return (
     <>
-      {experiencia.map((experiencia, index) => (
-        <div key={index} className="col-span-2 md:grid md:grid-cols-2 gap-4">
+      {Job.map((Job, index) => (
+        <div key={index} className="col-span-2 gap-4 md:grid md:grid-cols-2">
           <div className="flex flex-col">
             <h2 className="nnf-regular flex">
               Nombre de la Empresa {index + 1}
@@ -48,7 +54,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
               type="text"
               placeholder="escribe aqui"
               name="empresa"
-              value={experiencia.empresa}
+              value={Job.empresa}
               onChange={(e) => handleChange(e, index)}
               className="border-2 pl-4 focus:outline-none"
             />
@@ -65,7 +71,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
               type="text"
               placeholder="escribe aqui"
               name="puesto"
-              value={experiencia.puesto}
+              value={Job.puesto}
               onChange={(e) => handleChange(e, index)}
               className="border-2 pl-4 focus:outline-none"
             />
@@ -83,7 +89,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
               <input
                 type="date"
                 name="fechaInicio"
-                value={experiencia.fechaInicio}
+                value={Job.fechaInicio}
                 onChange={(e) => handleChange(e, index)}
                 className="border-2 pl-4 focus:outline-none"
               />
@@ -98,7 +104,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
               <input
                 type="date"
                 name="fechaFin"
-                value={experiencia.fechaFin}
+                value={Job.fechaFin}
                 onChange={(e) => handleChange(e, index)}
                 className="border-2 pl-4 focus:outline-none"
               />
@@ -122,7 +128,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
             <textarea
               name="descripcion"
               placeholder="escribe aqui"
-              value={experiencia.descripcion}
+              value={Job.descripcion}
               onChange={(e) => handleChange(e, index)}
               cols="20"
               rows="3"
@@ -132,7 +138,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
           </div>
           <button
             className="my-2 mb-2 ml-2 rounded bg-red-500 px-2 py-1 text-white"
-            onClick={() => handleRemoveExperiencia(index)}
+            onClick={() => handleRemoveJob(index)}
           >
             Eliminar
           </button>
@@ -142,7 +148,7 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
       <div className="col-span-2 flex">
         <button
           className="gb-prc nnf-bold px-4 py-1 text-white"
-          onClick={handleAddExperiencia}
+          onClick={handleAddJob}
         >
           Agregar Habilidad <span className="ml-2">+</span>
         </button>
@@ -151,4 +157,4 @@ const PNRExperiencia = ({ setDtExperiencia }) => {
   );
 };
 
-export default PNRExperiencia;
+export default RPJob;

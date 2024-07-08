@@ -1,10 +1,10 @@
 import React from "react";
 import icoAlert from "../assets/icons/alert.svg";
-const PNRAlerta = ({ textAlerta, showAlerta }) => {
+const RPAlert = ({ TextAlert, showAlert }) => {
   function falseAlerta() {
     document.body.style.overflow = "auto";
 
-    showAlerta();
+    showAlert();
   }
   return (
     <div className="absolute flex h-[200vh] w-full justify-center bg-black bg-opacity-50">
@@ -17,7 +17,7 @@ const PNRAlerta = ({ textAlerta, showAlerta }) => {
             <h2 className="nnf-regular text-[17px] text-yellow-700">
               Ocurrio un error
             </h2>
-            <p className="nnf-light mr-5 text-yellow-600">{textAlerta}</p>
+            <p className="nnf-light mr-5 text-yellow-600">{TextAlert}</p>
           </div>
         </div>
         <div className="w-12/12 flex justify-end">
@@ -33,4 +33,4 @@ const PNRAlerta = ({ textAlerta, showAlerta }) => {
   );
 };
 
-export default PNRAlerta;
+export default RPAlert;

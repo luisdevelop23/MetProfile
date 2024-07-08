@@ -102,7 +102,7 @@ const Info = () => {
           <h1 className="nnf-extra-bold prc text-center md:text-left md:text-2xl lg:text-3xl">
             Crea tu CV Profesional con MetProfile
           </h1>
-          <p className="nnf-semi-bold justify-normal px-5 pt-2 text-[10px] md:text-left md:text-[13px] lg:text-[16px]">
+          <p className="nnf-semi-bold justify-normal px-5 pt-2 text-[12px] md:text-left md:text-[13px] lg:text-[16px]">
             En MetProfile, te ayudamos a crear un CV profesional que destaque tu
             experiencia y habilidades. Nuestra plataforma te ofrece herramientas
             intuitivas para diseñar y personalizar tu perfil, asegurando que tu
@@ -111,10 +111,10 @@ const Info = () => {
             facilitando la conexión con empleadores y oportunidades laborales.
           </p>
         </div>
-        <div className="w-full justify-center md:flex md:w-1/2">
+        <div className="w-full justify-center md:flex md:w-1/2 py-8">
           <img
             src={infico}
-            className="mx-auto h-[150px] md:h-[250px] lg:h-[340px]"
+            className="mx-auto h-[170px] md:h-[250px] lg:h-[340px]"
             alt=""
           />
         </div>

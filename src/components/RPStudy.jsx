@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import asterisk from "./../assets/icons/asterisk.svg";
 
-const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
-  const [estudios, setEstudios] = useState([]);
+const RPStudy = ({ setStudentData, CleanData }) => {
+  const [study, setStudy] = useState([]);
 
   const handleChange = (e, index) => {
     const { name, value } = e.target;
-    const updateEstudios = [...estudios];
-    updateEstudios[index][name] = value;
-    setEstudios(updateEstudios);
+    const updatestudy = [...study];
+    updatestudy[index][name] = value;
+    setStudy(updatestudy);
   };
 
-  const handleAddEstudios = () => {
-    setEstudios([
-      ...estudios,
+  const handleAddstudys = () => {
+    setStudy([
+      ...study,
       {
         institucion: "",
         titulo: "",
@@ -23,19 +23,25 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
     ]);
   };
 
-  const handleRemoveEstudios = (index) => {
-    const updatedEstudios = estudios.filter((_, i) => i !== index);
-    setEstudios(updatedEstudios);
+  const handleRemovestudy = (index) => {
+    const updatestudy = study.filter((_, i) => i !== index);
+    setStudy(updatestudy);
   };
 
   useEffect(() => {
-    setDtEstudiantiles(estudios);
-  }, [estudios, setDtEstudiantiles]);
+    setStudentData(study);
+  }, [study, setStudentData]);
+
+  useEffect(() => {
+    if (CleanData) {
+      setStudy([]);
+    }
+  }, [CleanData]);
 
   return (
     <>
-      {estudios.map((estudio, index) => (
-        <div key={index} className="col-span-2 md:grid md:grid-cols-2 gap-4">
+      {study.map((study, index) => (
+        <div key={index} className="col-span-2 gap-4 md:grid md:grid-cols-2">
           <div className="flex flex-col">
             <h2 className="nnf-regular flex">
               Institución{" "}
@@ -46,7 +52,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
             <input
               type="text"
               name="institucion"
-              value={estudio.institucion}
+              value={study.institucion}
               onChange={(e) => handleChange(e, index)}
               placeholder="escribe aqui"
               className="border-2 pl-4 focus:outline-none"
@@ -63,7 +69,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
             <input
               type="text"
               name="titulo"
-              value={estudio.titulo}
+              value={study.titulo}
               onChange={(e) => handleChange(e, index)}
               placeholder="escribe aqui"
               className="border-2 pl-4 focus:outline-none"
@@ -71,7 +77,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
           </div>
 
           {/* Fechas inicio Final */}
-          <div className="grid grid-cols-2 gap-4 col-span-3">
+          <div className="col-span-3 grid grid-cols-2 gap-4">
             <div className="flex flex-col">
               <h2 className="nnf-regular flex">
                 Fecha de Inicio{" "}
@@ -82,7 +88,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
               <input
                 type="date"
                 name="fechaInicio"
-                value={estudio.fechaInicio}
+                value={study.fechaInicio}
                 onChange={(e) => handleChange(e, index)}
                 className="border-2 pl-4 focus:outline-none"
               />
@@ -97,7 +103,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
               <input
                 type="date"
                 name="fechaFin"
-                value={estudio.fechaFin}
+                value={study.fechaFin}
                 onChange={(e) => handleChange(e, index)}
                 className="border-2 pl-4 focus:outline-none"
               />
@@ -112,7 +118,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
           {/* Fin de Fechas inicio Final */}
           <button
             className="my-2 mb-2 ml-2 rounded bg-red-500 px-2 py-1 text-white"
-            onClick={() => handleRemoveEstudios(index)}
+            onClick={() => handleRemovestudy(index)}
           >
             Eliminar
           </button>
@@ -122,7 +128,7 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
       <div className="col-span-2 flex">
         <button
           className="gb-prc nnf-bold px-4 py-1 text-white"
-          onClick={handleAddEstudios}
+          onClick={handleAddstudys}
         >
           Agregar Estudios <span className="ml-2">+</span>
         </button>
@@ -131,4 +137,4 @@ const PNRDatosEstudiantiles = ({ setDtEstudiantiles }) => {
   );
 };
 
-export default PNRDatosEstudiantiles;
+export default RPStudy;

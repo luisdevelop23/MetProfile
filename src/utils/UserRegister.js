@@ -3,7 +3,7 @@ import supabase from "./supabase";
 async function UserRegister(objData) {
   const {
     IdUsuario,
-    Contrasena,
+    Contraseña,
     PNombre,
     SNombre,
     PApellido,
@@ -18,7 +18,7 @@ async function UserRegister(objData) {
     .insert([
       {
         UserName: IdUsuario,
-        contraseña: Contrasena,
+        contraseña: Contraseña,
         primerNombre: PNombre,
         segundoNombre: SNombre,
         apellidoPaterno: PApellido,
