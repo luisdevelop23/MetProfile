@@ -12,6 +12,7 @@ async function UserRegister(objData) {
     Telefono,
     Direccion,
     FechaNacimiento,
+    Presentacion
   } = objData;
   const { data, error } = await supabase
     .from("usuarios")
@@ -27,6 +28,7 @@ async function UserRegister(objData) {
         telefono: Telefono,
         direccion: Direccion,
         fecha_nacimiento: FechaNacimiento,
+        presentacion: Presentacion
       },
     ])
     .select();

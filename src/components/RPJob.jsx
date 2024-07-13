@@ -45,18 +45,18 @@ const RPJob = ({ setWorkExpData, CleanData }) => {
         <div key={index} className="col-span-2 gap-4 md:grid md:grid-cols-2">
           <div className="flex flex-col">
             <h2 className="nnf-regular flex">
-              Nombre de la Empresa {index + 1}
+              Empresa {index + 1}
               <span className="flex justify-center text-2xl font-bold">
                 <img src={asterisk} className="w-4" />
               </span>
             </h2>
             <input
               type="text"
-              placeholder="escribe aqui"
+              placeholder="Nombre de la empresa"
               name="empresa"
               value={Job.empresa}
               onChange={(e) => handleChange(e, index)}
-              className="border-2 pl-4 focus:outline-none"
+              className="border-2 pl-2 focus:outline-none"
             />
           </div>
 
@@ -69,11 +69,11 @@ const RPJob = ({ setWorkExpData, CleanData }) => {
             </h2>
             <input
               type="text"
-              placeholder="escribe aqui"
+              placeholder="Que puesto realizaste en la empresa"
               name="puesto"
               value={Job.puesto}
               onChange={(e) => handleChange(e, index)}
-              className="border-2 pl-4 focus:outline-none"
+              className="border-2 pl-2 focus:outline-none"
             />
           </div>
 
@@ -91,7 +91,7 @@ const RPJob = ({ setWorkExpData, CleanData }) => {
                 name="fechaInicio"
                 value={Job.fechaInicio}
                 onChange={(e) => handleChange(e, index)}
-                className="border-2 pl-4 focus:outline-none"
+                className="border-2 pl-2 focus:outline-none"
               />
             </div>
             <div className="flex flex-col">
@@ -106,7 +106,7 @@ const RPJob = ({ setWorkExpData, CleanData }) => {
                 name="fechaFin"
                 value={Job.fechaFin}
                 onChange={(e) => handleChange(e, index)}
-                className="border-2 pl-4 focus:outline-none"
+                className="border-2 pl-2 focus:outline-none"
               />
             </div>
             <div className="col-span-2">
@@ -127,12 +127,12 @@ const RPJob = ({ setWorkExpData, CleanData }) => {
             </h2>
             <textarea
               name="descripcion"
-              placeholder="escribe aqui"
+              placeholder="Describe tu trabajo"
               value={Job.descripcion}
               onChange={(e) => handleChange(e, index)}
               cols="20"
               rows="3"
-              className="border-2 pl-4 pt-2 focus:outline-none"
+              className="border-2 pl-2 pt-2 focus:outline-none"
               style={{ resize: "none" }}
             ></textarea>
           </div>

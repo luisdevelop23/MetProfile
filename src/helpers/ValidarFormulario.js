@@ -45,9 +45,9 @@ function validarFormulario(
       if (element.Habilidad == "") {
         return "Porfavor Ingresar Habilidad";
       }
-      if (element.Puntaje == "") {
-        return "Porfavor Ingresar Puntaje";
-      }
+      // if (element.Puntaje == "") {
+      //   return "Porfavor Ingresar Puntaje";
+      // }
     });
   }
   //!Validacion de Estudios

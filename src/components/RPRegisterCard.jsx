@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import icontrueRegister from "../assets/icons/happy-circle.svg";
 import loading from "../assets/icons/loadingCard.svg";
 import iconerrorRegister from "../assets/icons/sad-circle.svg";
@@ -62,9 +63,9 @@ const RPRegisterCard = ({RegisterCardShow,RegisterValue,ErrorRegisterText,UserDa
             llave:{"clave"}
           </h2> */}
           <div className="py-3">
-            <a className="nnf-bold my-6 rounded-lg py-2 uppercase text-gray-700 underline decoration-solid">
+            <Link to={`/user/${UserData.UserName}`}  className="nnf-bold my-6 rounded-lg py-2 uppercase text-gray-700 underline decoration-solid">
               Ver Mi Perfil
-            </a>
+            </Link>
           </div>
         </div>
       </div>

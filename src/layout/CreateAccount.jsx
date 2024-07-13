@@ -30,8 +30,6 @@ const CreateAccount = () => {
   const [ErrorRegisterText, setErrorRegisterText] = useState("");
   //?USERDATA
   const [UserData, setUserData] = useState({});
-  //? Imagen de usuario
-  const [Image, setImage] = useState(null);
 
   function showAlert() {
     setAlertStatus(!AlertStatus);
@@ -42,26 +40,6 @@ const CreateAccount = () => {
     document.body.style.overflow = "auto";
   }
 
-  const handleFileChange = (event) => {
-    setImage(event.target.files[0]);
-  };
-
-  const uploadImage = async () => {
-    const formData = new FormData();
-    formData.append("file", Image);
-    formData.append("upload_preset", "your_upload_preset"); // Configura tu upload preset
-
-    try {
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/your_cloud_name/image/upload`,
-        formData,
-      );
-      return response.data.secure_url;
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      return null;
-    }
-  };
   const RegistrarDatoss = async () => {
     const scroll = new SmoothScroll('a[href*="#"]', {
       speed: 800, // Velocidad del scroll (en milisegundos)
@@ -88,18 +66,6 @@ const CreateAccount = () => {
     scroll.animateScroll(0);
     document.body.style.overflow = "hidden";
     setTimeout(() => {}, 3000);
-
-    // Subir imagen
-    let imageUrl = null;
-    if (Image) {
-      imageUrl = await uploadImage();
-      if (!imageUrl) {
-        setRegisterValue(2);
-        setErrorRegisterText("Error uploading image");
-        return;
-      }
-      PersonalData.imageUrl = imageUrl; // Agregar URL de la imagen a los datos personales
-    }
 
     // ?insertamos los datos personales usuario
     const { data, error } = await UserRegister(PersonalData);
@@ -161,16 +127,6 @@ const CreateAccount = () => {
         <h1 className="nnf-bold prc py-10 text-center text-4xl">Registrate</h1>
         <div className="mx-auto grid w-11/12 grid-cols-2 gap-y-9 border-4 bg-white px-4 pb-8 pt-6 md:gap-x-16 md:gap-y-4 md:px-20">
           <RPUserData setPersonalData={setPersonalData} CleanData={CleanData} />
-          <h1 className="nnf-bold col-span-2 text-2xl">
-            Subir Imagen de Perfil
-          </h1>
-          <input
-            type="file"
-            accept="image/*"
-            capture="environment"
-            // onChange={handleFileChange}
-          />
-
           <h1 className="nnf-bold col-span-2 text-2xl">
             Habilidades{" "}
             <span className="pl-2 text-sm text-gray-500">(Opcional)</span>

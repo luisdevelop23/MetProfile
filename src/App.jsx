@@ -4,7 +4,8 @@ import "./App.css";
 import All from "./pages/All";
 import CreateAccount from "./pages/CreateAccount";
 import Home from "./pages/Home";
-import UserPage from "./pages/UserPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import User from "./pages/User";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,7 +20,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<CreateAccount />} />
           <Route path="/all" element={<All />} />
-          <Route path="/user/:userId" element={<UserPage/>} />
+          <Route path="/user/:userId" element={<User/>} />
+          <Route path="*" element={<NotFoundPage />} />
        </Routes>
       </BrowserRouter>
     </div>

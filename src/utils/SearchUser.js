@@ -38,12 +38,17 @@ async function searchLearn(id) {
 async function searchUserData(userName) {
     const { data: userData, error: userError } = await searchUsers(userName);
     
-    if (userError) {
-      return { error: userError };
-    }
     
-    const userId = userData.id; // Suponiendo que la columna ID del usuario es 'id'
-  
+  if (userError) {
+    return { error: userError };
+  }
+
+  if (!userData || userData.length === 0) {
+    return false;
+  }
+
+    const userId = userData[0].id; // Suponiendo que la columna ID del usuario es 'id'
+    // console.log("desde searchUser", userData[0].id);
     const [skills, jobs, learn] = await Promise.all([
       searchSkills(userId),
       searchJobs(userId),
