@@ -33,7 +33,7 @@ const User = () => {
     }
   }, [error, navigate]);
 
-
+console.log(userData)
   
   return (
     <>

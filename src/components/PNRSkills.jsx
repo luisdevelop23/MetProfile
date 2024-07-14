@@ -11,7 +11,7 @@ const PNRSkills = ({ setDataSkills, CleanData }) => {
   };
 
   const handleAddSkills = () => {
-    setSkills([...Skills, { habilidad: "", puntaje: "" }]);
+    setSkills([...Skills, { habilidad: "" }]);
   };
 
   const handleRemoveSkills = (index) => {
@@ -32,10 +32,9 @@ const PNRSkills = ({ setDataSkills, CleanData }) => {
     <>
       {Skills.map((Skills, index) => (
         <div key={index} className="col-span-1 flex flex-col gap-4 md:flex-row">
-          <div className="px-4">
+          <div className="">
             <h2 className="nnf-regular flex">
               Cual es tu habilidad nr°{index + 1}
-             
             </h2>
             <input
               type="text"
@@ -48,7 +47,7 @@ const PNRSkills = ({ setDataSkills, CleanData }) => {
           </div>
 
           <button
-            className="mx-auto my-2 mb-2 ml-2 rounded bg-red-500 px-2 py-1 text-white"
+            className="mx-auto my-2   rounded bg-red-500 px-2 text-white"
             onClick={() => handleRemoveSkills(index)}
           >
             Eliminar
@@ -56,7 +55,7 @@ const PNRSkills = ({ setDataSkills, CleanData }) => {
         </div>
       ))}
 
-      <div className="col-span-2 flex">
+      <div className="col-span-2 flex ">
         <button
           className="gb-prc nnf-bold px-4 py-1 text-white"
           onClick={handleAddSkills}

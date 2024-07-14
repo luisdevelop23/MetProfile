@@ -63,10 +63,12 @@ const CreateAccount = () => {
     }
   };
   const RegistrarDatoss = async () => {
+
     const scroll = new SmoothScroll('a[href*="#"]', {
       speed: 800, // Velocidad del scroll (en milisegundos)
       speedAsDuration: true, // Interpretar speed como duración (opcional)
     });
+
     let txt = validarFormulario(
       PersonalData,
       DataSkills,

@@ -150,7 +150,7 @@ const RPJob = ({ setWorkExpData, CleanData }) => {
           className="gb-prc nnf-bold px-4 py-1 text-white"
           onClick={handleAddJob}
         >
-          Agregar Habilidad <span className="ml-2">+</span>
+          Agregar Experiencia Laboral <span className="ml-2">+</span>
         </button>
       </div>
     </>
