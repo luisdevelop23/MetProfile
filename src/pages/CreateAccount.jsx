@@ -108,6 +108,7 @@ const CreateAccount = () => {
     setUserData(data[0]);
     setCleanData(false);
     scroll.animateScroll(0);
+    document.body.style.overflow = "auto";
   };
 
   return (

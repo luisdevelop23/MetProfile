@@ -7,6 +7,7 @@ import UPSkills from "../components/UPSkills";
 import UPUser from "../components/UPUser";
 
 const UserPage = ({ user }) => {
+  document.body.style.overflow = "auto";
 
   
   return (

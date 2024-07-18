@@ -34,14 +34,14 @@ const Cloudinary = ({setImageProfile}) => {
         }
 
     }
-    console.log(image)
+    // console.log(image)
 
     useEffect(() => {
         setImageProfile(image)
     }, [image])
 
   return (
-    <div className='flex'>
+    <div className='flex flex-col'>
         {/* <h1>Upload Image</h1> */}
 
         {/*1 - El siguiente input type file envia la imagen por el evento al handler uploadImage */}
