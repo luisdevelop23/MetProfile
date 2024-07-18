@@ -62,8 +62,8 @@ const RPRegisterCard = ({RegisterCardShow,RegisterValue,ErrorRegisterText,UserDa
           {/* <h2 className="nnf-regular text-left text-[18px] text-gray-700">
             llave:{"clave"}
           </h2> */}
-          <div className="py-3">
-            <Link to={`/user/${UserData.UserName}`}  className="nnf-bold my-6 rounded-lg py-2 uppercase text-gray-700 underline decoration-solid">
+          <div className="py-3 flex justify-center">
+            <Link to={`/user/${UserData.UserName}`}  className="nnf-bold my-6 rounded-lg py-2 uppercase text-gray-700   bg-[#3ecf8e] px-5 transition duration-300 hover:bg-[#3ecf8e]">
               Ver Mi Perfil
             </Link>
           </div>

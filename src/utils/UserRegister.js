@@ -1,6 +1,6 @@
 import supabase from "./supabase";
 
-async function UserRegister(objData) {
+async function UserRegister(objData, urlImage) {
   const {
     IdUsuario,
     Contraseña,
@@ -28,7 +28,8 @@ async function UserRegister(objData) {
         telefono: Telefono,
         direccion: Direccion,
         fecha_nacimiento: FechaNacimiento,
-        presentacion: Presentacion
+        presentacion: Presentacion,
+        Image: urlImage? urlImage : null
       },
     ])
     .select();

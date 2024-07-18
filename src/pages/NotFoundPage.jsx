@@ -17,9 +17,9 @@ const NotFoundPage = () => {
         </h1>
         <p className="text-center">La pagina que estas buscando no existe</p>
         <div className="flex items-center justify-center">
-          <div className="flex py-10">
+          <div className="flex py-10 flex-col gap-y-5 md:gap-y-0 md:flex-row">
             <input
-              className="rounded-lg border bg-gray-200 px-10 focus:outline-none"
+              className="rounded-lg border bg-gray-200 px-5 py-3 md:px-10 focus:outline-none"
               type="text"
               value={username}
               onChange={handleInputChange}
@@ -30,13 +30,13 @@ const NotFoundPage = () => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-10">
-          <Link to="/home" className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-lg border bg-gray-200 font-semibold uppercase duration-150 hover:scale-105 hover:shadow-2xl">
+          <Link to="/home" className="flex h-[100px] w-[100px] md:h-[140px] md:w-[140px] flex-col items-center justify-center rounded-lg border bg-gray-200 font-semibold uppercase duration-150 hover:scale-105 hover:shadow-2xl">
             <div>
               <img src={iconHome} alt="" />
             </div>
             <h2>Inicio</h2>
           </Link>
-          <Link to="/register" className="flex h-[140px] w-[140px] flex-col items-center justify-center rounded-lg border bg-gray-200 font-semibold uppercase transition-all duration-150 hover:scale-105 hover:shadow-2xl">
+          <Link to="/register" className="flex h-[100px] w-[100px] md:h-[140px] md:w-[140px] flex-col items-center justify-center rounded-lg border bg-gray-200 font-semibold uppercase transition-all duration-150 hover:scale-105 hover:shadow-2xl">
             <div>
               <img src={iconRegister} alt="" />
             </div>

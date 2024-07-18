@@ -18,13 +18,13 @@ const UserPage = ({ user }) => {
             <span className="relative -bottom-1 h-1.5 w-1/12 rounded-full bg-[#3ecf8e] transition-all group-hover:w-2/12"></span>
           </h1>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
-            <div className="col-span-12 md:col-span-5">
+          <div className="grid grid-cols-1 gap-8 md:gap-11 md:grid-cols-12">
+            <div className="col-span-12 md:col-span-4">
               {/* User */}
               <UPUser data={user.user[0]} />
             </div>
 
-            <div className="col-span-12 md:col-span-7">
+            <div className="col-span-12 md:col-span-8">
               {/* Skills */}
               {user.skills && <UPSkills data={user.skills} />}
 

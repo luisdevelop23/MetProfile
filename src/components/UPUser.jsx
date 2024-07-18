@@ -12,7 +12,8 @@ const UPUser = ({ data }) => {
     fecha_nacimiento,
     telefono,
     direccion,
-    presentacion
+    presentacion,
+    Image
   } = data;
   return (
     <div className="my-6">
@@ -21,7 +22,10 @@ const UPUser = ({ data }) => {
           <h2 className="py-4 text-center text-xl sm:text-left">
             {primerNombre} {segundoNombre} {apellidoPaterno} {apellidoMaterno}{" "}
           </h2>
-          <img src={iconUser} className="w-40" alt="" />
+          {
+            Image ? <img src={Image} className="w-52 rounded-lg" alt="" /> : <img src={iconUser} className="w-40" alt="" />
+          }
+          {/* <img src={iconUser} className="w-40" alt="" /> */}
         </div>
         <div className="">
           
